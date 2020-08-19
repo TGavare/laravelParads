@@ -3,7 +3,10 @@
 <head>
     <title>Challenge app</title>
 </head>
-<body>
+@extends('layout.mainlayout')
+
+@section('content')
+
     <!-- left section div -->
     <div class="left-section">
         <p>Create your own challenge</p>
@@ -29,5 +32,4 @@
         </select>
         <a href="#">Go</a>
     </div>
-</body>
-</html>
+@endsection
