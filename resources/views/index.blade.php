@@ -7,27 +7,27 @@
 
 @section('content')
 
-    <div class="row">
-        <div class="col-sm sec">
-            <div class="left-section">
-                <p>Create your own challenge</p>
-                <a href="#"><span class="plus"></span></a>
-            </div>
-        </div>
-        <div class="col-sm sec">
-            <div class="">
-                <select name="Date">
-                    <!-- options -->
-                </select>
-                <select name="Categories">
-                    <!-- options -->
-                </select>
-                <a href="#">Go</a>
-            </div>
-        </div>
-    </div>
     <div class="container">
-
+        <div class="row">
+            <div class="col-md-6 text-center align-self-center index-col">
+                <h5>Create your own challenge</h5>
+                <span class="new-challenge-button"><a href="#">+</a></span>
+                <a href="#" class="btn btn-outline-success my-2 my-sm-0">Your challenges</a>
+            </div>
+            <div class="col-md-6 text-center align-self-center index-col">
+                <!-- FORM? -->
+                <span class="search-form-input">
+                    <input type="date" name="date"
+                           min="2020-01-01" max="2020-12-31">
+                </span>
+                <span class="search-form-input">
+                    <select>
+                        <option value="" disabled selected hidden>Description</option>
+                    </select>
+                </span>
+                <a href="#" class="btn btn-outline-success my-2 my-sm-0">Go!</a>
+            </div>
+        </div>
     </div>
 
 @endsection

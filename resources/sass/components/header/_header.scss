@@ -5,21 +5,46 @@
     margin-bottom: 2%;
 }
 
-.sec {
+.index-col {
+    height: 180px;
     border: 1px solid black;
-    text-align: center;
+    padding: 1%;
 }
 
-.left-section {
-    border: 1px solid black;
-    margin: 0 auto;
-}
-
-.plus {
-    height: 80px;
-    width: 80px;
-    background-color: #bbb;
+.new-challenge-button {
+    background-color: #5cb85c;
+    width: 50px;
+    height: 50px;
     border-radius: 50%;
-    display: inline-block;
+    display: block;
+    vertical-align: middle;
+    text-align: center;
+    font-size: 30px;
+    border: 3px solid black;
     margin: 0 auto;
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+.new-challenge-button > a {
+    text-decoration: none;
+    color: black;
+}
+
+.new-challenge-button > a:hover {
+    text-decoration: none;
+}
+
+.search-form-input {
+    display: block;
+    padding-top: 3%;
+    padding-bottom: 3%;
+}
+
+.search-form-input input, select {
+    width: 40%;
+}
+
+.search-form-input select {
+    height: 30px;
 }
