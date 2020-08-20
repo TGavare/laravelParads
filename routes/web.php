@@ -20,3 +20,8 @@ Route::get('/', function () {
 Route::get('/index', function () {
     return view('index');
 });
+
+Route::get('/new-challenge', function () {
+    return view('new-challenge');
+});
+
