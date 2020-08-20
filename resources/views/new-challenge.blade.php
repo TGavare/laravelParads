@@ -8,7 +8,7 @@
 @section('content')
 
     <div class="form-container">
-        <form class="new-challenge-form" method="post" action="#">
+        <form class="new-challenge-form" method="POST" action="/challenges/store">
             <h3>New Challenge</h3>
             <div class="form-group">
                 <label>Title</label>
@@ -17,10 +17,6 @@
             <div class="form-group">
                 <label>Description</label>
                 <textarea class="form-control" name="desc"></textarea>
-            </div>
-            <div class="form-group">
-                <label>Keywords</label>
-                <input class="form-control" type="text" name="keyword">
             </div>
             <div class="form-group">
                 <label>Date</label>
