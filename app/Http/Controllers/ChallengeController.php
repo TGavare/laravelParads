@@ -35,10 +35,23 @@ class ChallengeController extends Controller
      */
     public function store(Request $request)
     {
-        $challenge = new Challenge;
-        $challenge->setTitle($request->get('title'));
-        $challenge->setDesc($request->get('desc'));
-        $challenge->save();
+        date_default_timezone_set('UTC');
+        $date_start = date('Y-m-d H:i:s');
+//        $date_end = strtotime($date_start);
+//        $date_end = strtotime("+7 day", $date_start);
+        $challenge = array (
+            'title' => $request->title,
+            'desc' => $request->desc,
+            'keywords' => 1,
+            'date_start' => $date_start,
+            'date_end' => /*date('Y-M-d h:i:s', $date_end)*/ $date_start,
+            'image' => $request->image,
+            'status' => true
+        );
+
+        Challenge::create($challenge);
+
+        return redirect('index');
     }
 
     /**

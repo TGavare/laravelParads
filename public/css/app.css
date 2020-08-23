@@ -36,13 +36,9 @@
   height: 50px;
   border-radius: 50%;
   display: block;
-  vertical-align: middle;
-  text-align: center;
   font-size: 30px;
   border: 3px solid black;
-  margin: 0 auto;
-  margin-top: 20px;
-  margin-bottom: 10px;
+  margin: auto;
 }
 
 .new-challenge-button > a {
@@ -67,6 +63,50 @@ select {
 
 .search-form-input select {
   height: 30px;
+}
+
+.addIcon {
+  margin-bottom: 10px;
+}
+
+.addIcon svg {
+  height: 50px;
+  width: 50px;
+}
+
+/* new challenge form */
+
+.form-container {
+  margin-top: 3%;
+  margin-bottom: 3%;
+}
+
+.new-challenge-form {
+  border: 1px solid black;
+  width: 50%;
+  margin: 0 auto;
+  padding: 3%;
+}
+
+.new-challenge-form h3 {
+  text-align: center;
+  padding-bottom: 4%;
+}
+
+.new-challenge-form button {
+  display: block;
+  margin: 0 auto;
+  width: 20%;
+}
+
+.image-input {
+  display: block;
+}
+
+body .card-group .card {
+  height: 300px !important;
+  width: 200px !important;
+  margin: 30px 30px 30px 30px;
 }
 
 .site-footer {

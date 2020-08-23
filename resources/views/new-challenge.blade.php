@@ -8,7 +8,8 @@
 @section('content')
 
     <div class="form-container">
-        <form class="new-challenge-form" method="POST" action="/challenges/store">
+        <form class="new-challenge-form" method="post" enctype="multipart/form-data" action="{{ route('challenges.store') }}">
+            @csrf
             <h3>New Challenge</h3>
             <div class="form-group">
                 <label>Title</label>

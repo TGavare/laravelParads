@@ -13,7 +13,7 @@ class CreateChallengeTable extends Migration
      */
     public function up()
     {
-        Schema::create('challenge', function (Blueprint $table) {
+        Schema::create('challenges', function (Blueprint $table) {
             $table->increments('id');
             $table->string('title');
             $table->text('desc');
@@ -21,6 +21,8 @@ class CreateChallengeTable extends Migration
             $table->date('date_start');
             $table->date('date_end');
             $table->string('image');
+            $table->boolean('status');
+            $table->timestamps();
         });
     }
 

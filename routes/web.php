@@ -27,4 +27,3 @@ Route::get('/new-challenge', function () {
 
 Route::resource('/challenges', 'ChallengeController');
 
-Route::post('/challenges/store','ChallengeController@store');
