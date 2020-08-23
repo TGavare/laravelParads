@@ -25,5 +25,9 @@ Route::get('/new-challenge', function () {
     return view('new-challenge');
 });
 
+Route::get('/challenge', function () {
+    return view('challenge');
+});
+
 Route::resource('/challenges', 'ChallengeController');
 
