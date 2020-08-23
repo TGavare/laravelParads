@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Challenge;
 use Illuminate\Http\Request;
+use DateTime;
 
 class ChallengeController extends Controller
 {
@@ -36,17 +37,17 @@ class ChallengeController extends Controller
     public function store(Request $request)
     {
         date_default_timezone_set('UTC');
-        $date_start = date('Y-m-d H:i:s');
-//        $date_end = strtotime($date_start);
-//        $date_end = strtotime("+7 day", $date_start);
+        $date_start = $request->date;
+        $date_end = DateTime::createFromFormat('Y-m-d', $date_start);
+        $date_end->modify('+1 week');
         $challenge = array (
             'title' => $request->title,
             'desc' => $request->desc,
-            'keywords' => 1,
+            'keywords' => null,
             'date_start' => $date_start,
-            'date_end' => /*date('Y-M-d h:i:s', $date_end)*/ $date_start,
+            'date_end' =>  $date_end->format('Y-m-d'),
             'image' => $request->image,
-            'status' => true
+            'status' => false
         );
 
         Challenge::create($challenge);

@@ -17,7 +17,7 @@ class CreateChallengeTable extends Migration
             $table->increments('id');
             $table->string('title');
             $table->text('desc');
-            $table->foreignId('keywords');
+            $table->foreignId('keywords')->nullable();
             $table->date('date_start');
             $table->date('date_end');
             $table->string('image');
