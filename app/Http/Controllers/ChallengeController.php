@@ -52,7 +52,7 @@ class ChallengeController extends Controller
 
         Challenge::create($challenge);
 
-        return redirect('index');
+        return redirect('/');
     }
 
     /**

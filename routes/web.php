@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Challenge;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,7 +15,9 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    $challenges = Challenge::all();
+
+    return View::make('index')->with(compact(['challenges']));
 });
 
 Route::get('/index', function () {
@@ -27,6 +30,14 @@ Route::get('/new-challenge', function () {
 
 Route::get('/challenge', function () {
     return view('challenge');
+});
+
+Route::get('/login', function () {
+    return view('login');
+});
+
+Route::get('/register', function () {
+    return view('register');
 });
 
 Route::resource('/challenges', 'ChallengeController');
