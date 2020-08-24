@@ -8,7 +8,17 @@
         <form class="form-inline mr-auto ml-auto">
             <input class="form-control" type="search" placeholder="Search" aria-label="Search" id="nav-search">
         </form>
-        <a class="btn btn-outline-success my-2 my-sm-0" type="submit" id="login" href="/login">Login</a>
-        <a class="btn btn-outline-success my-2 my-sm-0" type="submit" id="register" href="/register">Register</a>
+        @guest
+            <a class="btn btn-outline-success my-2 my-sm-0" id="login" href="{{ route('login') }}">Login</a>
+            <a class="btn btn-outline-success my-2 my-sm-0" id="register" href="{{ route('register') }}">Register</a>
+        @else
+            <a class="btn btn-outline-warning my-2 my-sm-0" href="{{ route('logout') }}"
+               onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                Logout
+            </a>
+            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                @csrf
+            </form>
+        @endguest
     </div>
 </nav>
