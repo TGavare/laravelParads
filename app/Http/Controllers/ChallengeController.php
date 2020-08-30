@@ -6,6 +6,7 @@ use App\Category;
 use App\Challenge;
 use Illuminate\Http\Request;
 use DateTime;
+use Illuminate\Support\Facades\Auth;
 
 class ChallengeController extends Controller
 {
@@ -50,6 +51,7 @@ class ChallengeController extends Controller
             'date_start' => $date_start,
             'date_end' =>  $date_end->format('Y-m-d'),
             'category_id' => $request->category,
+            'user_id' => Auth::id(),
             'status' => false
         );
 

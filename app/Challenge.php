@@ -14,6 +14,7 @@ class Challenge extends Model
         'date_start',
         'date_end',
         'category_id',
+        'user_id',
         'status'
     ];
 
