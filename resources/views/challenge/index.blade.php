@@ -35,7 +35,7 @@
                 @foreach($challenges as $challenge)
                     <tr>
                         <td>{{ $challenge->title }}</td>
-                        <td>not set</td>
+                        <td>{{ \App\Category::find($challenge->category_id)->title }}</td>
                     </tr>
                 @endforeach
             </table>

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Category;
 use App\Challenge;
 use Illuminate\Http\Request;
 use DateTime;
@@ -15,7 +16,9 @@ class ChallengeController extends Controller
      */
     public function index()
     {
-        //
+        $challenges = Challenge::all(['title','category_id']);
+        $categories = Category::all(['id', 'title']);
+        return view('challenge.index', compact('challenges', 'categories'));
     }
 
     /**
@@ -25,7 +28,8 @@ class ChallengeController extends Controller
      */
     public function create()
     {
-        return view('challenge/new-challenge');
+        $categories = Category::all(['id', 'title']);
+        return view('challenge.new-challenge', compact('categories'));
     }
 
     /**
@@ -43,10 +47,9 @@ class ChallengeController extends Controller
         $challenge = array (
             'title' => $request->title,
             'desc' => $request->desc,
-            'keywords' => null,
             'date_start' => $date_start,
             'date_end' =>  $date_end->format('Y-m-d'),
-            'image' => $request->image,
+            'category_id' => $request->category,
             'status' => false
         );
 
