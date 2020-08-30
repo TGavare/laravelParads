@@ -17,9 +17,8 @@ class ChallengeController extends Controller
      */
     public function index()
     {
-        $challenges = Challenge::all(['title','category_id']);
-        $categories = Category::all(['id', 'title']);
-        return view('challenge.index', compact('challenges', 'categories'));
+        $challenges = Challenge::all(['title','category_id','id','user_id']);
+        return view('challenge.index', compact('challenges'));
     }
 
     /**
@@ -68,7 +67,9 @@ class ChallengeController extends Controller
      */
     public function show($id)
     {
-        //
+        $challenge = Challenge::find($id);
+        $category = Category::find($challenge->category_id);
+        return view('challenge.challenge', compact('challenge','category'));
     }
 
     /**
@@ -79,7 +80,9 @@ class ChallengeController extends Controller
      */
     public function edit($id)
     {
-        //
+        $challenge = Challenge::find($id);
+        $categories = Category::all(['id', 'title']);
+        return view('challenge.edit-challenge', compact('challenge','categories'));
     }
 
     /**
@@ -91,7 +94,27 @@ class ChallengeController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        date_default_timezone_set('UTC');
+        $date_start = $request->date;
+        $date_end = DateTime::createFromFormat('Y-m-d', $date_start);
+        $date_end->modify('+1 week');
+        $challenge_update = array (
+            'id' => $id,
+            'title' => $request->title,
+            'desc' => $request->desc,
+            'date_start' => $date_start,
+            'date_end' =>  $date_end->format('Y-m-d'),
+            'category_id' => $request->category,
+            'user_id' => Auth::id(),
+            'status' => false
+        );
+
+        $challenge = Challenge::find($id);
+        $challenge->update($challenge_update);
+
+
+        return redirect()->route('challenges.index')
+            ->with('success','Challenge updated successfully');
     }
 
     /**
@@ -102,6 +125,10 @@ class ChallengeController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $challenge = Challenge::find($id);
+        $challenge->delete();
+
+        return redirect()->route('challenges.index')
+            ->with('success','Challenge updated successfully');
     }
 }

@@ -24,18 +24,30 @@
             </div>
         @endauth
         <h1 class="most-popular-title">Challenges</h1>
-        @if(!empty($challenges))
+        @if(!empty($challenges[0]))
             <table class="table table-striped">
                 <thead>
                 <tr>
                     <td>Title</td>
                     <td>Category</td>
+                    <td></td>
                 </tr>
                 </thead>
                 @foreach($challenges as $challenge)
                     <tr>
                         <td>{{ $challenge->title }}</td>
                         <td>{{ \App\Category::find($challenge->category_id)->title }}</td>
+                        <td>
+                            <form action="{{ route('challenges.destroy',$challenge->id) }}" method="POST">
+                                <a class="btn btn-warning" href="{{ route('challenges.show',$challenge->id) }}">View</a>
+                                @if(\Illuminate\Support\Facades\Auth::check() && $challenge->user_id == \Illuminate\Support\Facades\Auth::id())
+                                <a class="btn btn-primary" href="{{ route('challenges.edit',$challenge->id) }}">Edit</a>
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit" class="btn btn-danger">Delete</button>
+                                @endif
+                            </form>
+                        </td>
                     </tr>
                 @endforeach
             </table>

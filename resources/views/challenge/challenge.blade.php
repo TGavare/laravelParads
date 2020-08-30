@@ -9,11 +9,12 @@
 
     <div class="container">
         <div class="challenge-div">
-            <h1>Title</h1>
-            <p>Due date: </p>
-            <img src="#"/>
+            <h1>{{$challenge->title}}</h1>
+            <p>Category : {{$category->title}}</p>
+            <p>Category description: {{$category->desc}}</p>
+            <p>Due date: {{$challenge->date_end}}</p>
             <hr/>
-            <p>Lorem ipsum</p>
+            <p>{{$challenge->desc}}</p>
         </div>
     </div>
 

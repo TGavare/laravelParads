@@ -16,10 +16,6 @@ use App\Challenge;
 
 Route::get('/', 'ChallengeController@index')->name('index');
 
-Route::get('/new-challenge', function () {
-    return view('challenge/new-challenge');
-});
-
 Route::get('/challenge', function () {
     return view('challenge');
 });
