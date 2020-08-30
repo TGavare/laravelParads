@@ -24,8 +24,15 @@
                 <input class="form-control" type="date" name="date">
             </div>
             <div class="form-group">
-                <label>Image</label>
-                <input class="image-input" type="file" name="image">
+                <label>Category</label>
+                <select class="selectpicker" name="category">
+                    <option value="">--Select category--</option>
+                    @foreach($categories as $category)
+                        <option value="{{ $category->id }}">
+                            {{ $category->title }}
+                        </option>
+                    @endforeach
+                </select>
             </div>
             <button type="submit" class="btn btn-outline-primary my-2 my-sm-0">Submit</button>
         </form>

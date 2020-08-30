@@ -17,12 +17,15 @@ class CreateChallengeTable extends Migration
             $table->increments('id');
             $table->string('title');
             $table->text('desc');
-            $table->foreignId('category_id');
-            $table->foreign('category_id')->references('id')->on('categories');
+            $table->integer('category_id')->unsigned();
             $table->date('date_start');
             $table->date('date_end');
             $table->boolean('status');
             $table->timestamps();
+        });
+
+        Schema::table('challenges', function (Blueprint $table) {
+            $table->foreign('category_id')->references('id')->on('categories');
         });
     }
 
