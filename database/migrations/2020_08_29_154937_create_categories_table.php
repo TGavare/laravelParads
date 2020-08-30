@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateChallengeTable extends Migration
+class CreateCategoriesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,15 +13,10 @@ class CreateChallengeTable extends Migration
      */
     public function up()
     {
-        Schema::create('challenges', function (Blueprint $table) {
+        Schema::create('categories', function (Blueprint $table) {
             $table->increments('id');
             $table->string('title');
             $table->text('desc');
-            $table->foreignId('category_id');
-            $table->foreign('category_id')->references('id')->on('categories');
-            $table->date('date_start');
-            $table->date('date_end');
-            $table->boolean('status');
             $table->timestamps();
         });
     }
@@ -33,6 +28,6 @@ class CreateChallengeTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('challenges');
+        Schema::dropIfExists('categories');
     }
 }
