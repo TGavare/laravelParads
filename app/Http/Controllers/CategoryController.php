@@ -2,11 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Challenge;
+use App\Category;
 use Illuminate\Http\Request;
-use DateTime;
 
-class ChallengeController extends Controller
+class CategoryController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -25,7 +24,7 @@ class ChallengeController extends Controller
      */
     public function create()
     {
-        return view('challenge/new-challenge');
+        return view('category/create');
     }
 
     /**
@@ -36,21 +35,12 @@ class ChallengeController extends Controller
      */
     public function store(Request $request)
     {
-        date_default_timezone_set('UTC');
-        $date_start = $request->date;
-        $date_end = DateTime::createFromFormat('Y-m-d', $date_start);
-        $date_end->modify('+1 week');
-        $challenge = array (
+        $category = array (
             'title' => $request->title,
-            'desc' => $request->desc,
-            'keywords' => null,
-            'date_start' => $date_start,
-            'date_end' =>  $date_end->format('Y-m-d'),
-            'image' => $request->image,
-            'status' => false
+            'desc' => $request->desc
         );
 
-        Challenge::create($challenge);
+        Category::create($category);
 
         return redirect('/');
     }
@@ -58,10 +48,10 @@ class ChallengeController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Category  $category
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Category $category)
     {
         //
     }
@@ -69,10 +59,10 @@ class ChallengeController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Category  $category
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Category $category)
     {
         //
     }
@@ -81,10 +71,10 @@ class ChallengeController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \App\Category  $category
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Category $category)
     {
         //
     }
@@ -92,10 +82,10 @@ class ChallengeController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  \App\Category  $category
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Category $category)
     {
         //
     }

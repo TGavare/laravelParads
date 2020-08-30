@@ -15,17 +15,11 @@ use App\Challenge;
 */
 
 Route::get('/', function () {
-    $challenges = Challenge::all();
-
-    return View::make('index')->with(compact(['challenges']));
-});
-
-Route::get('/index', function () {
-    return view('index');
+    return view('challenge/index');
 });
 
 Route::get('/new-challenge', function () {
-    return view('new-challenge');
+    return view('challenge/new-challenge');
 });
 
 Route::get('/challenge', function () {
@@ -41,6 +35,8 @@ Route::get('/register', function () {
 });
 
 Route::resource('/challenges', 'ChallengeController');
+
+Route::resource('/categories', 'CategoryController');
 
 Auth::routes();
 
