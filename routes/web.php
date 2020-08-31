@@ -28,6 +28,8 @@ Route::get('/register', function () {
     return view('register');
 });
 
+Route::get('/my-challenges', 'ChallengeController@myChallenges');
+
 Route::resource('/challenges', 'ChallengeController');
 
 Route::resource('/categories', 'CategoryController');

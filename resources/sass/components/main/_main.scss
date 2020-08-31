@@ -38,3 +38,15 @@
 .most-popular-title {
     margin-top: 5%;
 }
+
+.create-challenge {
+    position: relative;
+
+    .new-challenge-blocks {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        display: inline-block;
+        transform: translate(-50%,-50%);
+    }
+}

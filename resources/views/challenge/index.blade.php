@@ -19,7 +19,7 @@
                         </svg>
                     </a>
                     <br><br>
-                    <a href="#" class="btn btn-outline-success my-2 my-sm-0">Your challenges</a>
+                    <a href="/my-challenges" class="btn btn-outline-success my-2 my-sm-0">Your challenges</a>
                 </div>
             </div>
         @endauth

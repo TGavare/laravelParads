@@ -7,6 +7,7 @@ use App\Challenge;
 use Illuminate\Http\Request;
 use DateTime;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class ChallengeController extends Controller
 {
@@ -130,5 +131,11 @@ class ChallengeController extends Controller
 
         return redirect()->route('challenges.index')
             ->with('success','Challenge updated successfully');
+    }
+
+    public function myChallenges()
+    {
+        $challenges = DB::table('challenges')->where('user_id', Auth::id())->get();
+        return view('challenge.your-challenges', compact('challenges'));
     }
 }
