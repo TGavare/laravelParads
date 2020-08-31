@@ -40,12 +40,14 @@
                         <td>
                             <form action="{{ route('challenges.destroy',$challenge->id) }}" method="POST">
                                 <a class="btn btn-warning" href="{{ route('challenges.show',$challenge->id) }}">View</a>
-                                @if(\Illuminate\Support\Facades\Auth::check() && $challenge->user_id == \Illuminate\Support\Facades\Auth::id())
+                                @auth()
+                                @if((\Illuminate\Support\Facades\Auth::check() && $challenge->user_id == \Illuminate\Support\Facades\Auth::id()) || DB::table('users')->where('id', \Illuminate\Support\Facades\Auth::id())->first()->role_id == 2)
                                 <a class="btn btn-primary" href="{{ route('challenges.edit',$challenge->id) }}">Edit</a>
                                 @csrf
                                 @method('DELETE')
                                 <button type="submit" class="btn btn-danger">Delete</button>
                                 @endif
+                                @endauth
                             </form>
                         </td>
                     </tr>

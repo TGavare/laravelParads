@@ -5,7 +5,6 @@
     </head>
     <body>
         @include('layout.partials.nav')
-{{--        @include('layout.partials.header')--}}
         @yield('content')
         @include('layout.partials.footer')
         @include('layout.partials.footer-scripts')

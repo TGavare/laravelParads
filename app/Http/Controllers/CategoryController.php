@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Category;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class CategoryController extends Controller
 {
@@ -14,7 +15,8 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        //
+        $categories = Category::all(['title','id','desc']);
+        return view('category.index', compact('categories'));
     }
 
     /**
@@ -42,7 +44,8 @@ class CategoryController extends Controller
 
         Category::create($category);
 
-        return redirect('/');
+        return redirect()->route('categories.index')
+            ->with('success','Category updated successfully');
     }
 
     /**
@@ -64,7 +67,7 @@ class CategoryController extends Controller
      */
     public function edit(Category $category)
     {
-        //
+        return view('category.edit', compact('category'));
     }
 
     /**
@@ -76,7 +79,10 @@ class CategoryController extends Controller
      */
     public function update(Request $request, Category $category)
     {
-        //
+        $category->update($request->all());
+
+        return redirect()->route('categories.index')
+            ->with('success','Category updated successfully');
     }
 
     /**
@@ -87,6 +93,10 @@ class CategoryController extends Controller
      */
     public function destroy(Category $category)
     {
-        //
+        DB::table('challenges')->where('category_id', $category->id)->delete();
+        $category->delete();
+
+        return redirect()->route('categories.index')
+            ->with('success','Category updated successfully');
     }
 }

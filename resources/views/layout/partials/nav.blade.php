@@ -6,12 +6,16 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <a class="navbar-brand" href="/">Challenges 24/7</a>
         <form class="form-inline mr-auto ml-auto">
-            <input class="form-control" type="search" placeholder="Search" aria-label="Search" id="nav-search">
+            
         </form>
         @guest
             <a class="btn btn-outline-success my-2 my-sm-0" id="login" href="{{ route('login') }}">Login</a>
             <a class="btn btn-outline-success my-2 my-sm-0" id="register" href="{{ route('register') }}">Register</a>
         @else
+            @if(DB::table('users')->where('id', \Illuminate\Support\Facades\Auth::id())->first()->role_id == 2)
+                <a class="btn btn-outline-danger my-2 my-sm-0 new-category-button" href="{{ route('categories.create') }}">Create category</a>
+                <a class="btn btn-outline-danger my-2 my-sm-0 new-category-button" href="{{ route('categories.index') }}">Category list</a>
+            @endif
             <a class="btn btn-outline-warning my-2 my-sm-0" href="{{ route('logout') }}"
                onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                 Logout
