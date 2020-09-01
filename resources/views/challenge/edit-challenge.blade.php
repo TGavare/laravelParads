@@ -13,19 +13,19 @@
             <h3>Edit Challenge</h3>
             <div class="form-group">
                 <label>Title</label>
-                <input class="form-control" type="text" name="title" value="{{$challenge->title}}">
+                <input class="form-control" type="text" name="title" value="{{$challenge->title}}" required minlength="4">
             </div>
             <div class="form-group">
                 <label>Description</label>
-                <textarea class="form-control" name="desc">{{$challenge->desc}}</textarea>
+                <textarea class="form-control" name="desc" required minlength="10">{{$challenge->desc}}</textarea>
             </div>
             <div class="form-group">
                 <label>Date</label>
-                <input class="form-control" type="date" name="date" value="{{$challenge->date_start}}">
+                <input class="form-control" type="date" name="date" value="{{$challenge->date_start}}" required>
             </div>
             <div class="form-group">
                 <label>Category</label>
-                <select class="selectpicker" name="category">
+                <select class="selectpicker" name="category" required>
                     <option selected value="{{$challenge->category_id}}">{{\App\Category::find($challenge->category_id)->title}}</option>
                     @foreach($categories as $category)
                         @if($challenge->category_id != $category->id)
